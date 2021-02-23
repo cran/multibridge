@@ -1,7 +1,7 @@
 Package: multibridge
 Title: Evaluating Multinomial Order Restrictions with Bridge Sampling
-Version: 1.0.0
-Date: 2021-01-21
+Version: 1.1.0
+Date: 2021-02-19
 Authors@R: c(
 	person(given = "Alexandra", family = "Sarafoglou", email = "alexandra.sarafoglou@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0031-685X")),
 	person(given = "Frederik", family = "Aust", role = "aut", comment = c(ORCID = "0000-0003-4900-788X")),
@@ -32,7 +32,7 @@ VignetteBuilder: knitr
 RdMacros: Rdpack
 Depends: R (>= 3.5.0)
 NeedsCompilation: yes
-Packaged: 2021-01-21 14:54:55 UTC; alexandra.sarafoglou
+Packaged: 2021-02-22 14:51:05 UTC; alexandra.sarafoglou
 Author: Alexandra Sarafoglou [aut, cre]
     (<https://orcid.org/0000-0003-0031-685X>),
   Frederik Aust [aut] (<https://orcid.org/0000-0003-4900-788X>),
@@ -42,4 +42,4 @@ Author: Alexandra Sarafoglou [aut, cre]
   Maarten Marsman [aut] (<https://orcid.org/0000-0001-5309-7502>)
 Maintainer: Alexandra Sarafoglou <alexandra.sarafoglou@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-01-25 08:40:02 UTC
+Date/Publication: 2021-02-23 11:10:02 UTC
