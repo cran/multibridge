@@ -12,7 +12,7 @@
 \item{...}{additional arguments, currently ignored}
 }
 \value{
-Invisibly returns a \code{list} which contains the log marginal likelihood and associated error terms.
+Invisibly returns a \code{list} which contains the log marginal likelihood for inequality constrained category proportions and associated error terms.
 }
 \description{
 Summarizes bridge sampling results and associated error measures

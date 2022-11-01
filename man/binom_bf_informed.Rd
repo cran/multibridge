@@ -6,7 +6,7 @@
 \usage{
 binom_bf_informed(
   x,
-  n,
+  n = NULL,
   Hr,
   a,
   b,

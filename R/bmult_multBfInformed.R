@@ -3,6 +3,8 @@ NULL
 
 #' @importFrom Rcpp evalCpp
 NULL
+#' @importFrom Rdpack reprompt
+NULL
 
 #' @title Evaluates Informed Hypotheses on Multinomial Parameters
 #' 
@@ -104,7 +106,7 @@ NULL
 #' 'theta6')
 #' Hr            <- c('theta1', '<',  'theta2', '&', 'theta3', '=', 'theta4', 
 #' ',', 'theta5', '<', 'theta6')
-#' output_total  <- mult_bf_informed(x, Hr, a, factor_levels, seed=2020, niter=2e3)
+#' output_total  <- mult_bf_informed(x, Hr, a, factor_levels, seed=2020, niter=100)
 #' 
 #' @references 
 #' \insertRef{damien2001sampling}{multibridge}
@@ -136,6 +138,8 @@ mult_bf_informed <- function(x, Hr, a=rep(1, length(x)), factor_levels=NULL, cre
   ################################
   ## Preprocessing for Analysis ##
   ################################
+  
+  logml <- .mult_computeLogMl(a=a, x=x)
   
   # Put factor levels in order for analysis
   constrained_factors <- purrr::keep(Hr, function(x) any(x %in% factor_levels))
@@ -230,6 +234,9 @@ mult_bf_informed <- function(x, Hr, a=rep(1, length(x)), factor_levels=NULL, cre
   
   ### Compute Bayes Factor BF_er ##
   logBFer <- sum(logBFe_equalities) + sum(logBFe_inequalities)
+  # BFer = mlHe/mlHr --> mlHr = mlHe/BFer
+  logml[['logmlHr']] <- logml$logmlHe - logBFer
+  
   # compute associate error term
   re2 <- sum(error_measures_prior, error_measures_post)
   error_measures <- data.frame(re2 = re2, 
@@ -239,13 +246,23 @@ mult_bf_informed <- function(x, Hr, a=rep(1, length(x)), factor_levels=NULL, cre
   
   if(bf_type %in% c('BF0r', 'BFr0', 'LogBFr0')){
     
-    bf0_table <-  mult_bf_equality(x, a)$bf
-    bfr_table <- data.frame(LogBFer=logBFer , 
-                            BFer=exp(logBFer), 
-                            BFre=1/exp(logBFer))
+    # bf0_table <-  mult_bf_equality(x, a)$bf
+    # bfr_table <- data.frame(LogBFer=logBFer , 
+    #                         BFer=exp(logBFer), 
+    #                         BFre=1/exp(logBFer))
+    # 
+    # logBFe0    <- bf0_table$LogBFe0
+    # logBFr0    <-  -logBFer + logBFe0
     
-    logBFe0    <- bf0_table$LogBFe0
-    logBFr0    <-  -logBFer + logBFe0
+    logBFe0    <- logml$logmlHe - logml$logmlH0
+    logBFr0    <- logml$logmlHr - logml$logmlH0
+    
+    bf0_table <-  data.frame(LogBFe0=logBFe0 ,
+                             BFe0=exp(logBFe0),
+                             BF0e=1/exp(logBFe0))
+    bfr_table <- data.frame(LogBFer=logBFer ,
+                            BFer=exp(logBFer),
+                            BFre=1/exp(logBFer))
     
     bf_list <- list(bf_type    = bf_type,
                     bf         = data.frame(LogBFr0 = logBFr0,
@@ -271,6 +288,7 @@ mult_bf_informed <- function(x, Hr, a=rep(1, length(x)), factor_levels=NULL, cre
   
   # Bayes factors
   output <- list(bf_list         = bf_list,
+                 logml           = logml,
                  cred_level      = cred_level,
                  restrictions    = restrictions,
                  bridge_output   = bs_results

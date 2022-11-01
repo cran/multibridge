@@ -186,7 +186,7 @@ samples.bmult <- function(x){
 #' 
 #' ## Multinomial Case
 #' out_mult  <- mult_bf_informed(x=x, Hr=Hr, a=a, factor_levels=factor_levels,
-#' niter=1e3, seed=2020)
+#' niter=500, seed=2020)
 #' bayes_factor(out_mult)
 #' @export
 bayes_factor <- function (x) {
@@ -361,7 +361,7 @@ print.bmult_bridge <- function(x, ...){
 #'
 #' @param object object of class \code{bmult_bridge} as returned from \code{\link{mult_bf_inequality}} or \code{\link{binom_bf_inequality}}
 #' @param ... additional arguments, currently ignored
-#' @return  Invisibly returns a `list` which contains the log marginal likelihood and associated error terms. 
+#' @return  Invisibly returns a `list` which contains the log marginal likelihood for inequality constrained category proportions and associated error terms. 
 #' @examples 
 #' # data
 #' x <- c(3, 4, 10, 11)
@@ -537,7 +537,10 @@ print.bmult <- function(x, ...){
 #' \describe{The summary method returns a \code{list} with the following elements:
 #' \item{\code{$hyp}}{Vector containing the informed hypothesis as specified by the user}
 #' \item{\code{$bf}}{Contains Bayes factor}
-#' \item{\code{$bf}}{Contains relative mean-square error for the Bayes factor}
+#' \item{\code{$logmlHe}}{Contains log marginal likelihood of the encompassing model}
+#' \item{\code{$logmlH0}}{Contains log marginal likelihood of the null model}
+#' \item{\code{$logmlHr}}{Contains log marginal likelihood of the informed model}
+#' \item{\code{$re2}}{Contains relative mean-square error for the Bayes factor}
 #' \item{\code{$bf_type}}{Contains Bayes factor type as specified by the user}
 #' \item{\code{$cred_level}}{Credible interval for the posterior point estimates.}
 #' \item{\code{$prior}}{List containing the prior parameters.}
@@ -581,6 +584,9 @@ summary.bmult <- function(object, ...){
   bf_type <- bf_list$bf_type
   bf      <- signif(bf_list$bf[[bf_type]], 5) 
   re2     <- bf_list$error_measures$re2
+  logmlHe <- object$logml$logmlHe
+  logmlH0 <- object$logml$logmlH0
+  logmlHr <- object$logml$logmlHr
   
   nr_equal      <- length(object$bf_list$logBFe_equalities[,'logBFe_equalities'])
   nr_inequal    <- length(object$bf_list$logBFe_inequalities[,'logBFe_inequalities'])
@@ -609,7 +615,12 @@ summary.bmult <- function(object, ...){
   estimates_output$alpha     <- ifelse(!is.null(counts), a + counts, a)
   estimates_output$beta      <- ifelse(!is.null(counts), b + n - counts, b) 
   
-  output <- list(hyp = hyp, bf=bf, re2=re2,
+  output <- list(hyp = hyp, 
+                 bf=bf, 
+                 logmlHe = logmlHe,
+                 logmlH0 = logmlH0,
+                 logmlHr = logmlHr,
+                 re2=re2,
                  bf_type = bf_type, 
                  cred_level=cred_level, 
                  prior=list(a=a, b=b), data=list(x=counts, n=n), 
@@ -764,13 +775,13 @@ print.summary.bmult <- function(x, ...){
 #' Hr <- c('theta1', '<',  'theta2', '&', 'theta3', '=', 
 #' 'theta4', ',', 'theta5', '<', 'theta6')
 #' output_total  <- mult_bf_informed(x, Hr, a, factor_levels, seed=2020, 
-#' niter=1e3, bf_type = "BFer")
+#' niter=100, bf_type = "BFer")
 #' plot(summary(output_total))
 #' 
 #' # data for a big Bayes factor
 #' x <- c(3, 4, 10, 11, 7, 30) * 1000
 #' output_total  <- mult_bf_informed(x, Hr, a, factor_levels, seed=2020, 
-#' niter=1e3, bf_type = "BFre")
+#' niter=100, bf_type = "BFre")
 #' plot(summary(output_total))
 
 plot.summary.bmult <- function(x, main = NULL, xlab = NULL, ylab = NULL, xlim = NULL, ylim = NULL, panel.first = NULL, ...) {

@@ -25,10 +25,7 @@ hypothesis and the Bayes factor.}
 
 \item{ylab}{\code{character}. A string used as title for the y-axis.}
 
-\item{xlim}{numeric vectors of length 2, giving the x and y
-    coordinates ranges.}
-
-\item{ylim}{numeric vectors of length 2, giving the x and y
+\item{xlim, ylim}{numeric vectors of length 2, giving the x and y
     coordinates ranges.}
 
 \item{panel.first}{\code{expression}. Evaluated after the plot axes are set up but

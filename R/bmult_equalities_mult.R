@@ -32,11 +32,17 @@ mult_bf_equality <- function(x, a, p = rep(1/length(a), length(a))){
   if (any(rowSums(cbind(p, x)) == 0)) {
     
     # in this case, x*log(p) should be zero, omit to avoid numerical issue with log(0)
-    
+    # logmlHe <- (lbeta.xa-lbeta.a) + log.coef
+    # logmlH0 <- log.coef
+    # logBFe0 <- ml.He - ml.H0
     logBFe0 <- (lbeta.xa-lbeta.a)
     
+     
   } else {
     
+    # logmlHe <- (lbeta.xa-lbeta.a) + log.coef
+    # logmlH0 <- sum(x * log(p)) + log.coef
+    # logBFe0 <- ml.He - ml.H0
     logBFe0 <- (lbeta.xa-lbeta.a) + (0 - sum(x * log(p)))
     
   }

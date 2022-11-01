@@ -37,6 +37,24 @@ Furthermore, the model assigns a beta distribution as prior to each model parame
 (i.e., underlying binomial proportions). That is:
 \deqn{\theta_k ~ Beta(\alpha_k, \beta_k)}
 }
+\note{
+The following signs can be used to encode restricted hypotheses: \code{"<"} and \code{">"} for inequality constraints, \code{"="} for equality constraints,
+\code{","} for free parameters, and \code{"&"} for independent hypotheses. The restricted hypothesis can either be a string or a character vector.
+For instance, the hypothesis \code{c("theta1 < theta2, theta3")} means
+\itemize{
+\item \code{theta1} is smaller than both \code{theta2} and \code{theta3}
+\item The parameters \code{theta2} and \code{theta3} both have \code{theta1} as lower bound, but are not influenced by each other.
+}
+The hypothesis \code{c("theta1 < theta2 = theta3 & theta4 > theta5")} means that
+\itemize{
+\item Two independent hypotheses are stipulated: \code{"theta1 < theta2 = theta3"} and \code{"theta4 > theta5"}
+\item The restrictions on the parameters \code{theta1}, \code{theta2}, and \code{theta3} do
+not influence the restrictions on the parameters \code{theta4} and \code{theta5}.
+\item \code{theta1} is smaller than \code{theta2} and \code{theta3}
+\item \code{theta2} and \code{theta3} are assumed to be equal
+\item \code{theta4} is larger than \code{theta5}
+}
+}
 \examples{
 data(journals)
 x <- journals$errors

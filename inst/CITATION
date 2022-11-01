@@ -9,8 +9,22 @@ citEntry(
                     person("Gronau", "Quentin F."),
                     person("Wagenmakers", "Eric-Jan"),
                     person("Marsman", "Maarten")),
+  journal  = "Psychological Methods",
+  year     = "2021",
+  textVersion = paste("Sarafoglou, A., Haaf, J. M., Ly, A., Gronau, Q. F., Wagenmakers, E., & Marsman, M. (2021). Evaluating multinomial order restrictions with bridge sampling. Psychological Methods. https://doi.org/10.1037/met0000411")
+)
+citEntry(
+  entry    = "Article",
+  title    = "multibridge: An R Package To Evaluate Informed Hypotheses in Binomial and Multinomial Models",
+  author   = c(person("Sarafoglou", "Alexandra"),
+                    person("Aust", "Frederik"),
+                    person("Marsman", "Maarten"),
+                    person("Bartos", "Frantisek"),
+                    person("Wagenmakers", "Eric-Jan"),
+                    person("Haaf", "Julia M.")
+                    ),
   journal  = "PsyArXiv",
-  year     = "2020",
+  year     = "2022",
   url      = "https://psyarxiv.com/bux7p/",
-  textVersion = paste("Sarafoglou, A., Haaf, J. M., Ly, A., Gronau, Q. F., Wagenmakers, E., & Marsman, M. (2020). Evaluating multinomial order restrictions with bridge sampling. PsyArXiv. Retrieved from https://psyarxiv.com/bux7p/")
+  textVersion = paste("Sarafoglou, A., Aust, F., Marsman, M., Bartos, F., Wagenmakers, E., & Haaf, J. M. (2021). multibridge: An R Package To Evaluate Informed Hypotheses in Binomial and Multinomial Models. PsyArXiv. https://doi.org/10.31234/osf.io/qk4cy")
 )
