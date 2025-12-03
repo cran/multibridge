@@ -40,6 +40,6 @@ Hr            <- c('theta1', '<',  'theta2', '<', 'theta3', '<', 'theta4')
 
 ## Multinomial Case
 out_mult  <- mult_bf_informed(x=x, Hr=Hr, a=a, factor_levels=factor_levels,
-niter=1e3, seed=2020)
+niter=500, seed=2020)
 bayes_factor(out_mult)
 }

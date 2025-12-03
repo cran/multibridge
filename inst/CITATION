@@ -1,8 +1,8 @@
 citHeader("To cite multibridge in publications use:")
 
-citEntry(
-  entry    = "Article",
-  title    = "Evaluating Multinomial Order Restrictions with Bridge Sampling",
+bibentry(
+  bibtype  = "Article",
+  title    = "Evaluating multinomial order restrictions with bridge sampling.",
   author   = c(person("Sarafoglou", "Alexandra"),
                     person("Haaf", "Julia M."),
                     person("Ly", "Alexander"),
@@ -10,12 +10,17 @@ citEntry(
                     person("Wagenmakers", "Eric-Jan"),
                     person("Marsman", "Maarten")),
   journal  = "Psychological Methods",
-  year     = "2021",
-  textVersion = paste("Sarafoglou, A., Haaf, J. M., Ly, A., Gronau, Q. F., Wagenmakers, E., & Marsman, M. (2021). Evaluating multinomial order restrictions with bridge sampling. Psychological Methods. https://doi.org/10.1037/met0000411")
+  volume   = "28",
+  number   = "2",
+  pages    = "322",
+  year     = "2023",
+  publisher = "American Psychological Association",
+  doi      = "10.1037/met0000411",
+  textVersion = paste("Sarafoglou, A., Haaf, J. M., Ly, A., Gronau, Q. F., Wagenmakers, E., & Marsman, M. (2023). Evaluating multinomial order restrictions with bridge sampling. Psychological Methods, 28(2), 322. https://doi.org/10.1037/met0000411")
 )
-citEntry(
-  entry    = "Article",
-  title    = "multibridge: An R Package To Evaluate Informed Hypotheses in Binomial and Multinomial Models",
+bibentry(
+  bibtype  = "Article",
+  title    = "Multibridge: An R package to evaluate informed hypotheses in binomial and multinomial models",
   author   = c(person("Sarafoglou", "Alexandra"),
                     person("Aust", "Frederik"),
                     person("Marsman", "Maarten"),
@@ -23,8 +28,12 @@ citEntry(
                     person("Wagenmakers", "Eric-Jan"),
                     person("Haaf", "Julia M.")
                     ),
-  journal  = "PsyArXiv",
-  year     = "2022",
-  url      = "https://psyarxiv.com/bux7p/",
-  textVersion = paste("Sarafoglou, A., Aust, F., Marsman, M., Bartos, F., Wagenmakers, E., & Haaf, J. M. (2021). multibridge: An R Package To Evaluate Informed Hypotheses in Binomial and Multinomial Models. PsyArXiv. https://doi.org/10.31234/osf.io/qk4cy")
+  journal  = "Behavior Research Methods",
+  volume   = "55",
+  number   = "8",
+  pages    = "4343--4368",
+  year     = "2023",
+  publisher = "Springer",
+  doi      = "10.3758/s13428-022-02020-1",
+  textVersion = paste("Sarafoglou, A., Aust, F., Marsman, M., Bartos, F., Wagenmakers, E., & Haaf, J. M. (2023). Multibridge: An R package to evaluate informed hypotheses in binomial and multinomial models. Behavior Research Methods, 55(8), 4343-4368. https://doi.org/10.3758/s13428-022-02020-1")
 )

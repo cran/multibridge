@@ -1,7 +1,7 @@
 Package: multibridge
 Title: Evaluating Multinomial Order Restrictions with Bridge Sampling
-Version: 1.2.0
-Date: 2022-10-28
+Version: 1.3.0
+Date: 2025-12-01
 Authors@R: c(
 	person(given = "Alexandra", family = "Sarafoglou", email = "alexandra.sarafoglou@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0031-685X")),
 	person(given = "Frederik", family = "Aust", role = "aut", comment = c(ORCID = "0000-0003-4900-788X")),
@@ -26,20 +26,20 @@ Imports: Brobdingnag, coda, mvtnorm, purrr, Rcpp (>= 0.12.17),
         magrittr, progress, Rdpack, stringr
 Suggests: knitr, rmarkdown, testthat
 SystemRequirements: GNU make, mpfr (>= 3.0.0), gmp (>= 6.2.1_1)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 LinkingTo: Rcpp
 VignetteBuilder: knitr
 RdMacros: Rdpack
 Depends: R (>= 3.5.0)
 NeedsCompilation: yes
-Packaged: 2022-10-28 15:43:48 UTC; alexandra.sarafoglougmail.com
-Author: Alexandra Sarafoglou [aut, cre]
-    (<https://orcid.org/0000-0003-0031-685X>),
-  Frederik Aust [aut] (<https://orcid.org/0000-0003-4900-788X>),
-  Julia M. Haaf [aut] (<https://orcid.org/0000-0001-5122-706X>),
+Packaged: 2025-12-03 12:42:44 UTC; alexandra.sarafoglougmail.com
+Author: Alexandra Sarafoglou [aut, cre] (ORCID:
+    <https://orcid.org/0000-0003-0031-685X>),
+  Frederik Aust [aut] (ORCID: <https://orcid.org/0000-0003-4900-788X>),
+  Julia M. Haaf [aut] (ORCID: <https://orcid.org/0000-0001-5122-706X>),
   Joris Goosen [aut],
   Quentin F. Gronau [aut],
-  Maarten Marsman [aut] (<https://orcid.org/0000-0001-5309-7502>)
+  Maarten Marsman [aut] (ORCID: <https://orcid.org/0000-0001-5309-7502>)
 Maintainer: Alexandra Sarafoglou <alexandra.sarafoglou@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-11-01 13:37:41 UTC
+Date/Publication: 2025-12-03 13:00:02 UTC
